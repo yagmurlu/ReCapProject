@@ -12,7 +12,7 @@ namespace ConsolesUI
     {
         static void Main(string[] args)
         {
-             CarTest();
+            CarTest();
             // BrandTest();
 
 
@@ -34,10 +34,22 @@ namespace ConsolesUI
             //carManager.Add(new Car { BrandId = 1, ColorId = 2, DailyPrice = 0, ModelYear = 2020, Description = "TOGG " });
 
             //carManager.Update(new Car { Id = 3, BrandId = 1, ColorId = 2, DailyPrice = 22000, ModelYear = 2020, Description = "sıfır araç" });
-            foreach (var car in carManager.GetCarDetails())
+
+            var result = carManager.GetAll();
+            if (result.Success)
             {
-                Console.WriteLine(car.ColorName+"--"+car.BrandName);
+                foreach (var car in result.Data)
+                {
+                    Console.WriteLine(car.Description + "--" + car.ModelYear);
+                    
+                }
             }
+            else
+            {
+                Console.WriteLine(result.Message);
+
+            }
+
         }
     }
 }
