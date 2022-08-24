@@ -12,16 +12,26 @@ namespace ConsolesUI
     {
         static void Main(string[] args)
         {
-            CarTest();
+            // CarTest();
             // BrandTest();
 
+            UserTest();
 
+        }
+
+        private static void UserTest()
+        {
+            UserManager userManager = new UserManager(new EfUserDal());
+            //userManager.Add(new User { FirstName = "Yağmur", LastName = "Yıldırım", Email = "yagmur@gmail.com", Password = "123" });
+            userManager.Add(new User { FirstName = "Muhammed", LastName = "Yıldırım", Email = "yıldırım@gmail.com", Password = "345" });
+            userManager.Add(new User { FirstName = "Mihrimah", LastName = "Han", Email = "mihrimah@gmail.com", Password = "567" });
+            userManager.Add(new User { FirstName = "Süleyman", LastName = "Yılmaz", Email = "süleyman@gmail.com", Password = "789" });
         }
 
         private static void BrandTest()
         {
             BrandManager brandManager = new BrandManager(new EfBrandDal());
-            foreach (var brand in brandManager.GetAll())
+            foreach (var brand in brandManager.GetAll().Data)
             {
                 Console.WriteLine(brand.Name);
             }
