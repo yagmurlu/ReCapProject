@@ -1,6 +1,4 @@
 ﻿using Business.Abstract;
-using Business.Concrete;
-using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -13,52 +11,48 @@ namespace WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CarsController : ControllerBase
+    public class ColorsController : ControllerBase
     {
-        ICarService _carService;
+        IColorService _colorService;
 
-        public CarsController(ICarService carService)
+        public ColorsController(IColorService colorService)
         {
-            _carService = carService;
+            _colorService = colorService;
         }
-
         [HttpGet("getall")]
         public IActionResult GetAll()
         {
-            var result = _carService.GetAll();
+            var result = _colorService.GetAll();
             if (result.Success)
             {
                 return Ok(result);
             }
-            
             return BadRequest(result);
         }
         [HttpGet("getbyid")]
         public IActionResult GetById(int id)
         {
-            var result = _carService.GetById(id);
+            var result = _colorService.GetById(id);
             if (result.Success)
             {
                 return Ok(result);
-
             }
             return BadRequest(result);
         }
         [HttpPost("add")]
-        public IActionResult Add(Car car)
+        public IActionResult Add(Color color)
         {
-            var result = _carService.Add(car);
+            var result = _colorService.Add(color);
             if (result.Success)
             {
                 return Ok(result);
-
             }
             return BadRequest(result);
         }
         [HttpPost("update")]
-        public IActionResult Update(Car car)
+        public IActionResult Update(Color color)
         {
-            var result = _carService.Update(car);
+            var result = _colorService.Update(color);
             if (result.Success)
             {
                 return Ok(result);
@@ -66,9 +60,9 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
         [HttpPost("delete")]
-        public IActionResult Delete(Car car)
+        public IActionResult Delete(Color color)
         {
-            var result = _carService.Delete(car);
+            var result = _colorService.Delete(color);
             if (result.Success)
             {
                 return Ok(result);
