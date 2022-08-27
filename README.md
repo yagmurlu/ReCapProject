@@ -1,1 +1,1 @@
-<h4 style="color:pink">Engin Demiroğ - Yazılım Geliştrici Yetiştirme Kampı</h4>
+$$\textcolor{yellow}{\text{Engin Demiroğ - Yazılım Geliştrici Yetiştirme Kampı}}$$
